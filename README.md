@@ -27,7 +27,7 @@ Each stage transforms the program into a new format — step by step — until i
 |  **Objcopy** | Extracts raw data and formats into Intel HEX | `avr-objcopy -O ihex -R .eeprom blink.elf blink.hex` | `blink.hex` |
 |  **Flashing** | Uploads the HEX file to Arduino via bootloader | `avrdude -C "<path>/avrdude.conf" -c arduino -p atmega328p -P COM19 -b 115200 -U flash:w:blink.hex` | LED 💡 |
 
-> 🚀 For a detailed block diagram and in-depth explanation of each build stage, refer to [**The Build Stages Explained**](https://github.com/ShravanaHS/understanding-the-c-compiler#31-the-build-stages-explained).
+> 🚀 For a detailed block diagram and in-depth explanation of each build stage, refer to [**The Build Stages Explained**](https://github.com/ShravanaHS/understanding-the-c-compiler#2-the-build-process-from-c-to-hex).
 
 ---
 
