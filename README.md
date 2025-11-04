@@ -1,6 +1,6 @@
 # Understanding the Build Process — Arduino Uno (ATmega328P)
 
-A complete guide to understanding **how a C program turns into machine code** and runs on an **Arduino Uno**, without using the Arduino IDE.
+Understanding **how a C program turns into machine code** and runs on an **Arduino Uno**, without using the Arduino IDE.
 
 This repository shows every step of the **bare-metal build process** — from writing a simple LED blink program to generating the `.hex` file and flashing it to the ATmega328P microcontroller using command-line tools.
 
