@@ -40,6 +40,7 @@ Each stage transforms the program into a new format — step by step — until i
 This is the minimal **bare-metal C program** that toggles the onboard LED (connected to PB5 / Digital Pin 13) on the Arduino Uno.  
 It directly manipulates **I/O registers** instead of using the Arduino framework.
 
+> 🔗 **View full source:** [blink.c](https://github.com/ShravanaHS/understanding-the-build-process-arduino-uno/blob/main/bare_metal_blink/blink.c)
 ```c
 #include <stdint.h>  // For uint8_t type
 
@@ -56,6 +57,7 @@ int main(void) {
     }
 }
 ```
+
 ###  Explanation
 
 | Line | Description |
@@ -68,5 +70,64 @@ int main(void) {
 | `for(...)` | Crude software delay loop |
 
 > **Note:** This direct register approach helps you understand how Arduino’s `digitalWrite()` really works internally.
+
+---
+
+## Toolchain Setup (Windows)
+
+<p align="center">
+  <img src="https://github.com/ShravanaHS/Register-Level-Programming-With-Arduino-UNO/blob/main/images/toolchain_setup.png" alt="AVR Toolchain Setup" width="600">
+</p>
+
+Before building and flashing the code, we need to make sure the **AVR-GCC Toolchain** and **AVRDUDE** are installed and accessible from the terminal.
+
+### 🔹 Step 1 — Locate the Tools Installed by Arduino IDE
+
+When you install the Arduino IDE, it already includes these tools.  
+They can be found in your local AppData folder:
+```
+C:\Users<YourUsername>\AppData\Local\Arduino15\packages\arduino\tools\
+```
+Inside this folder, locate:
+```
+avr-gcc\7.3.0-atmel3.6.1-arduino7\bin
+avrdude\6.3.0-arduino17\bin
+```
+
+### 🔹 Step 2 — Add Both Paths to Environment Variables
+
+1. Press **Windows Key → “Edit the system environment variables”**  
+2. Click **Environment Variables…**  
+3. Under *System variables*, find and edit **Path**  
+4. Click **New**, then paste each of the following lines:
+
+```
+C:\Users<YourUsername>\AppData\Local\Arduino15\packages\arduino\tools\avr-gcc\7.3.0-atmel3.6.1-arduino7\bin
+C:\Users<YourUsername>\AppData\Local\Arduino15\packages\arduino\tools\avrdude\6.3.0-arduino17\bin
+```
+5. Click **OK** on all windows.
+
+<p align="center">
+<img src="https://github.com/ShravanaHS/Register-Level-Programming-With-Arduino-UNO/blob/main/images/add_to_path.png" alt="Add to PATH" width="500">
+</p>
+
+### 🔹 Step 3 — Verify the Installation
+
+Open a **new terminal** and type:
+
+```bash
+avr-gcc --version
+avrdude --version
+```
+You should see outputs like:
+```
+avr-gcc (GCC) 7.3.0
+Copyright (C) 2017 Free Software Foundation, Inc.
+...
+avrdude version 6.3
+```
+If both work, your setup is complete!
+
+
 
 
