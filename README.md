@@ -75,9 +75,6 @@ int main(void) {
 
 ## Toolchain Setup (Windows)
 
-<p align="center">
-  <img src="https://github.com/ShravanaHS/Register-Level-Programming-With-Arduino-UNO/blob/main/images/toolchain_setup.png" alt="AVR Toolchain Setup" width="600">
-</p>
 
 Before building and flashing the code, we need to make sure the **AVR-GCC Toolchain** and **AVRDUDE** are installed and accessible from the terminal.
 
@@ -108,7 +105,7 @@ C:\Users<YourUsername>\AppData\Local\Arduino15\packages\arduino\tools\avrdude\6.
 5. Click **OK** on all windows.
 
 <p align="center">
-<img src="https://github.com/ShravanaHS/Register-Level-Programming-With-Arduino-UNO/blob/main/images/add_to_path.png" alt="Add to PATH" width="500">
+<img src="https://github.com/ShravanaHS/understanding-the-build-process-arduino-uno/blob/main/images/envi.png">
 </p>
 
 ### 🔹 Step 3 — Verify the Installation
@@ -126,6 +123,10 @@ Copyright (C) 2017 Free Software Foundation, Inc.
 ...
 avrdude version 6.3
 ```
+<p align="center">
+  <img src="https://github.com/ShravanaHS/understanding-the-build-process-arduino-uno/blob/main/images/terminal.png" alt="AVR Toolchain Setup" width="1000">
+</p>
+
 If both work, your setup is complete!
 
 
