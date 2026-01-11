@@ -313,55 +313,6 @@ avr-size bare_metal_blink/blink.elf
 # (Optional) View detailed disassembly with symbol info
 avr-objdump -d bare_metal_blink/blink.elf > bare_metal_blink/blink_disassembly.txt
 ```
-## 5️⃣ Conversion — `.elf` → `.hex` (ELF to Intel HEX)
-
-**Purpose:**  
-The `.elf` file contains executable code along with debug symbols and metadata, which cannot be directly flashed to the microcontroller.  
-Therefore, it must be converted into a lightweight **Intel HEX (`.hex`)** file that contains only flashable program data.
-
----
-
-### Command (ELF → HEX)
-
-```bash
-avr-objcopy -O ihex -R .eeprom bare_metal_blink/blink.elf bare_metal_blink/blink.hex
-```
-### Command Breakdown
-
-| Option | Description |
-|------|-------------|
-| `avr-objcopy` | Converts and copies object files |
-| `-O ihex` | Specifies Intel HEX output format |
-| `-R .eeprom` | Removes EEPROM section from output |
-| `blink.elf` | Input ELF executable |
-| `blink.hex` | Output HEX file used for flashing |
-
----
-
-### What This Step Does
-
-- Extracts only the sections required for **Flash memory**
-- Removes debug information and non-flashable sections
-- Produces a **bootloader-compatible HEX file**
-
----
-
-### Expected Output
-
-A new file is generated:
-``` bare_metal_blink/blink.hex```
-If opened in a text editor, it will appear similar to:
-
-```
-:100000000C9434000C943B000C943B000C943B00A6
-:100010000C943B000C943B000C943B000C943B0068
-...
-:00000001FF
-```
-
----
-
-> 💡 The `.hex` file is the **final firmware image** uploaded to the ATmega328P using `avrdude`.
 
 
 ### How to Read This
@@ -446,7 +397,24 @@ Therefore, the ELF must be converted into a lightweight **Intel HEX (.hex)** for
 - Removes unnecessary sections like `.eeprom`, `.debug_info`, and `.comment`.  
 - The resulting `.hex` file contains **only the flashable program data**.  
 
+
+### Command (ELF → HEX)
+
+```bash
+avr-objcopy -O ihex -R .eeprom bare_metal_blink/blink.elf bare_metal_blink/blink.hex
+```
+### Command Breakdown
+
+| Option | Description |
+|------|-------------|
+| `avr-objcopy` | Converts and copies object files |
+| `-O ihex` | Specifies Intel HEX output format |
+| `-R .eeprom` | Removes EEPROM section from output |
+| `blink.elf` | Input ELF executable |
+| `blink.hex` | Output HEX file used for flashing |
+
 ---
+
 
 ### What to Check / Expected Output
 
